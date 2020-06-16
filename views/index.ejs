@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>T9Stadium</title>
+    <!--用来加载外部资源-->
+    <!--相对路径/绝对路径-->
+    <link rel="short icon" href="public/images/lable.jpg">
+    <!--stylesheet用来加载外部样式表-->
+    <link rel="stylesheet" href="public/css/stadium.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <script type="text/javascript" src="public/js/stadium.js"></script>
+    <script type="text/javascript" src="public/js/jquery-1.11.0.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.js"></script>
+    <style>
+        .L_second_div{
+            text-align: center;
+        }
+        .L_second_div img{
+            margin-top: 20px;
+            height: 100px;
+        }
+        .input-group{
+            width: 80%;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+        }
+        .input-group-addon{
+            font-size: 20px;
+        }
+        .btn-primary{
+            width: 80%;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .btn-success{
+            width: 80%;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--第一部分-->
+<!--语义化标签：增强代码可读性-->
+<%- include("commonhead.ejs")%>
+<!--第二部分-->
+<div class="L_second_div">
+    <img class="L_head_img" src="public/images/id.png" alt="">
+</div>
+
+<!--第三部分-->
+<form action="">
+    <div class="L_form_div">
+        <div class="input-group">
+            <span class="input-group-addon">账号</span>
+            <input class="form-control" type="text" name="account" id="L_account"><br>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">密码</span>
+            <input class="form-control" type="password" name="password" id="L_pwd"><br>
+        </div>
+    </div>
+
+    <div class="L_loginbtn_div">
+        <input class="btn btn-primary" type="button" value="登录" id="L_btn">
+    </div>
+    <div class="L_loginbtn_div">
+        <input class="btn btn-success" type="button" onclick="location.href='/regist'" value="注册" id="R_btn">
+    </div>
+</form>
+<script type="text/javascript">
+    $("#L_btn").click(function () {
+        let content = md5($("#L_pwd").val());
+        $.ajax({
+            type:"post",
+            url:"/login",
+            async:true,
+            data:{userId:$("#L_account").val(),passWord:content},
+            dataType:"json",
+            success:function (data) {
+                if (data.code==200){
+                    alert(data.msg);
+                    localStorage.setItem('token',data.token);
+                    location.href='/getstadiumInfo';
+                }else{
+                    alert(data.msg);
+                    location.href='/index';
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

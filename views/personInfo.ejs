@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>注册</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" rel="stylesheet">
+    <script src="public/js/jquery-1.11.0.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<header>
+    <%- include("commonhead.ejs")%>
+</header>
+
+<div class="regist_div_first">
+    <img src="public/images/customer.png">
+</div>
+<div class="">
+    <div class="">
+        <span>账号名：</span>
+        <input type="text" name="account" id="userId"><br>
+    </div>
+
+    <img src="public/images/lable.jpg" alt="photo" height="40px">
+    <form enctype="multipart/form-data" method="post" name="fileInfo">
+        <input type="file" accept="image/png,image/jpg" id="picUpload" name="file">
+    </form>
+
+    <button type="button" class="btn btn-primary" id="modifyPicV">确定</button>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

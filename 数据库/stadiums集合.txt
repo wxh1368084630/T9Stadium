@@ -1,0 +1,151 @@
+{
+    
+    "name" : "T9西田城店",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "1",
+    "video" : "1",
+    "medical" : "1",
+    "park" : "1",
+    "address" : "杭州市余杭区金家渡路8号西田城购物中心C座屋顶",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9西田.jpg"
+    
+}
+
+/* 2 */
+{
+    "name" : "T9下沙华媒店",
+    "address" : "杭州市江干区下沙经济开发区1号大街68号",
+    "soccer7" : "0",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "0",
+    "video" : "0",
+    "medical" : "0",
+    "park" : "1",
+    "restroom" : "0",
+    "imgrul" : "public/images/T9华媒.png"
+    
+}
+
+/* 3 */
+{
+    
+    "name" : "T9阳光地带店",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "0",
+    "video" : "0",
+    "medical" : "0",
+    "park" : "1",
+    "address" : "杭州市余杭区五洲路荷禹路交叉口",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9阳光地带.jpg"
+    
+}
+
+/* 4 */
+{
+    
+    "name" : "T9城建店",
+    "soccer7" : "0",
+    "soccer5" : "1",
+    "lighting" : "0",
+    "grass" : "0",
+    "video" : "0",
+    "medical" : "0",
+    "park" : "1",
+    "address" : "杭州市萧山区湖园三路8号",
+    "restroom" : "0",
+    "imgrul" : "public/images/T9城建.jpg"
+    
+}
+
+/* 5 */
+{
+    
+    "name" : "T9颐高城市",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "0",
+    "grass" : "0",
+    "video" : "0",
+    "medical" : "0",
+    "park" : "1",
+    "address" : "杭州市西湖区黄姑山路29号颐高产业创业园停车楼顶楼",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9颐高.jpg"
+    
+}
+
+/* 6 */
+{
+    
+    "name" : "T9西溪印象城店",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "1",
+    "video" : "0",
+    "medical" : "0",
+    "park" : "1",
+    "address" : "杭州市余杭区五常大道1号西溪印象城1期楼顶",
+    "restroom" : "0",
+    "imgrul" : "public/images/T9西溪.jpg"
+    
+}
+
+/* 7 */
+{
+    
+    "name" : "T9德胜商职店",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "1",
+    "video" : "1",
+    "medical" : "1",
+    "park" : "1",
+    "address" : "杭州市拱墅区德胜路238号",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9德胜.png"
+    
+}
+
+/* 8 */
+{
+    
+    "name" : "T9宝龙店",
+    "soccer7" : "1",
+    "soccer5" : "1",
+    "lighting" : "1",
+    "grass" : "1",
+    "video" : "1",
+    "medical" : "1",
+    "park" : "1",
+    "address" : "杭州市滨江区诚业路415号",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9宝龙.png"
+    
+}
+
+/* 9 */
+{
+    
+    "name" : "T9江南专修学院店",
+    "soccer7" : "1",
+    "soccer5" : "0",
+    "lighting" : "1",
+    "grass" : "1",
+    "video" : "1",
+    "medical" : "1",
+    "park" : "1",
+    "address" : "杭州市滨江区明德路1号",
+    "restroom" : "1",
+    "imgrul" : "public/images/T9江南.png"
+    
+}
+

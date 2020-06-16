@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>场馆详情</title>
+    <!--相对路径/绝对路径-->
+    <link rel="short icon" href="public/images/lable.jpg">
+    <!--stylesheet用来加载样式表-->
+    <link rel="stylesheet" href="public/css/playground.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <script type="text/javascript" src="public/js/jquery-1.11.0.js"></script>
+    <style>
+        body{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<!--第一部分-->
+<%- include("commonhead.ejs")%>
+<!--第二部分-->
+<div class="div_playground_first">
+    <img class="p_img"   src="<%= info.imgrul%>" alt="">
+    <ul>
+        <li>
+            <span class="text-success"><%= info.name%></span>
+            <br>
+            <% if (info.soccer7==1){%>
+            <span class="text-info" >七人制</span>
+            <%}%>
+            <% if (info.soccer5==1){%>
+            <span class="text-info">五人制</span>
+            <%}%>
+        </li>
+        <li>
+            <img src="/public/images/坐标.png" alt="" width="20" height="20">
+            <span class="text-success"><%= info.address%></span>
+        </li>
+    </ul>
+</div>
+<!--第三部分-->
+<hr>
+<div class="div_playground_second">
+    <ul>
+        <li>
+            <% if (info.lighting==1){%>
+            <img src="public/images/lighting.png">
+            <span>灯光球场</span>
+            <%}%>
+        </li>
+        <li>
+            <% if (info.grass==1){%>
+            <img src="public/images/grass_true.png">
+            <span>天然草皮</span>
+            <%}else{%>
+            <img src="public/images/grass_false.png">
+            <span>人工草皮</span>
+            <%}%>
+        </li>
+        <li>
+            <% if (info.video==1){%>
+            <img src="public/images/video.png">
+            <span>录像</span>
+            <%}%>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <% if (info.medical==1){%>
+            <img src="public/images/medical.png">
+            <span>医疗</span>
+            <%}%>
+        </li>
+        <li>
+            <% if (info.park==1){%>
+            <img src="public/images/park.png">
+            <span>停车场</span>
+            <%}%>
+        </li>
+        <li>
+            <% if (info.restroom==1){%>
+            <img src="public/images/restroom.png">
+            <span>更衣室</span>
+            <%}%>
+        </li>
+    </ul>
+</div>
+<!--第四部分-->
+<hr>
+<div class="div_playground_third">
+    <ul>
+        <li>
+            <div class="div_book">
+                <% if (book.monday==0){%>
+                <a href="javascript:void(0);"  onclick="subscribe('monday')">
+                <span class="text-primary" id="mon_sub">周一</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);"  onclick="unsubscribe('monday')">
+                <span class="text-danger" id="mon_unsub">周一</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+        <li>
+            <div class="div_book">
+                <% if (book.tuesday==0){%>
+                <a href="javascript:void(0);" onclick="subscribe('tuesday')">
+                <span class="text-primary" id="tue_sub">周二</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);" onclick="unsubscribe('tuesday')">
+                <span class="text-danger" id="tue_unsub">周二</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <div class="div_book">
+                <% if (book.wednesday==0){%>
+                <a href="javascript:void(0);" onclick="subscribe('wednesday')">
+                <span class="text-primary" id="wed_sub">周三</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);" onclick="unsubscribe('wednesday')">
+                <span class="text-danger" id="web_unsub">周三</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+        <li>
+            <div class="div_book">
+                <% if (book.thursday==0){%>
+                <a href="javascript:void(0);" onclick="subscribe('thursday')">
+                <span class="text-primary" id="th_sub">周四</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);" onclick="unsubscribe('thursday')">
+                <span class="text-danger" id="th_unsub">周四</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <div class="div_book">
+                <% if (book.friday==0){%>
+                <a href="javascript:void(0);" onclick="subscribe('friday')">
+                <span class="text-primary" id="fri_sub">周五</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);" onclick="unsubscribe('friday')">
+                <span class="text-danger" id="fri_unsub">周五</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+        <li>
+            <div class="div_book">
+                <% if (book.saturday==0){%>
+                <a href="javascript:void(0);" onclick="subscribe('saturday')">
+                <span class="text-primary" id="sat_sub">周六</span>
+                <span class="text-primary">包场可订</span>
+                <img src="/public/images/book_3.png">
+                </a>
+                <%}else {%>
+                <a href="javascript:void(0);" onclick="unsubscribe('saturday')">
+                <span class="text-danger" id="sat_unsub">周六</span>
+                <span class="text-danger">已被预订</span>
+                <img src="/public/images/book_2.png">
+                </a>
+                <%}%>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--第六部分-->
+<footer>
+    <a href="/getstadiumInfo">
+        <img src="public/images/stadium_2.png" alt="">
+        <span >场馆列表</span>
+    </a>
+
+    <a href="/searchstadium">
+        <img src="public/images/search.png" alt="">
+        <span>查询场馆</span>
+    </a>
+
+    <a href="/mystadium">
+        <img src="public/images/my.png" alt="">
+        <span >我的信息</span>
+    </a>
+</footer>
+
+<script type="text/javascript">
+    function subscribe(weekday) {
+        if (confirm("您确定要预订当前场次吗？")){
+            $.ajax({
+                type:"post",
+                url:"/subscribe",
+                dataType:"json",
+                data:{name:'<%= book.name%>',week:weekday},
+                async:true,
+                success:function (data) {
+                    if (data.code==200){
+                        alert(data.msg);
+                        location.href="playgrounds?name=" + '<%= book.name%>';
+                    }else {
+                        alert(data.msg);
+                        location.href="playgrounds?name=" + '<%= book.name%>';
+                    }
+                }
+            })
+        }else{
+            location.href="playgrounds?name=" + '<%= book.name%>';
+        }
+    }
+
+    function unsubscribe(weekday) {
+        if (confirm("您确定要取消场馆预订吗？")){
+            var name = '<%= book.name%>';
+            $.ajax({
+                type:"post",
+                url:"/unsubscribe",
+                dataType:"json",
+                data:{name:'<%= book.name%>',week:weekday},
+                async:true,
+                success:function (data) {
+                    if (data.code==200){
+                        alert(data.msg);
+                        location.href="playgrounds?name=" + '<%= book.name%>';
+                    }else {
+                        alert(data.msg);
+                        location.href="playgrounds?name=" + '<%= book.name%>';
+                    }
+                }
+            })
+        }else{
+            location.href="playgrounds?name=" + '<%= book.name%>';
+        }
+    }
+</script>
+
+</body>
+</html>

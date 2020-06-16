@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>我的平台</title>
+    <!--相对路径/绝对路径-->
+    <link rel="short icon" href="public/images/lable.jpg">
+    <link rel="stylesheet" href="public/css/mystadium.css">
+</head>
+<body>
+<!--第一部分-->
+<%- include("commonhead.ejs")%>
+
+<!--第二部分-->
+<div class="MD_external_div">
+    <img class="MD_bg_img" src="public/images/lable.jpg" alt="">
+    </div>
+</div>
+
+<!--第三部分-->
+<div class="MD_third_div">
+    <img class="MD_left_img" src="public/images/my_info.png" alt="请检查网络连接！">
+    <a href="/stadium_manage_insert"><span>管理场馆</span></a>
+</div>
+
+<div class="MD_third_div">
+    <img class="MD_left_img" src="public/images/about.png" alt="请检查网络连接！">
+    <a href="/aboutT9"><span>关于T9</span></a>
+</div>
+
+<div class="MD_third_div">
+    <img class="MD_left_img" src="public/images/change_pw.png" alt="请检查网络连接！">
+    <a href="/changePwd"><span>修改密码</span></a>
+</div>
+
+<div class="MD_third_div" >
+    <img class="MD_left_img" src="public/images/quit.png" alt="请检查网络连接！">
+    <a href="/relogin"><span>退出登录</span></a>
+</div>
+
+<!--第四部分-->
+<footer>
+    <a href="/getstadiumInfo">
+        <img src="public/images/stadium.png" alt="">
+        <span >场馆列表</span>
+    </a>
+
+    <a href="/searchstadium">
+        <img src="public/images/search.png" alt="">
+        <span>查询场馆</span>
+    </a>
+
+    <a href="/mystadium">
+        <img src="public/images/my_2.png" alt="">
+        <span >我的信息</span>
+    </a>
+</footer>
+
+
+</body>
+</html>

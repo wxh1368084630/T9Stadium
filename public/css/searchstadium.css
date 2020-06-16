@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background: rgb(244,244,246);
+    padding-top: 44px;
+    padding-bottom: 49px;
+}
+
+.Lbt{
+    text-align: center;
+}
+.Lbt img{
+    width: 90%;
+    height: 350px;
+    margin-top: 20px;
+}
+.search{
+    text-align: center;
+}
+.search img{
+    margin-top: 10px;
+    width: 40%;
+}
+.input-group{
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 70%;
+    float: left;
+}
+.input_button{
+    float: left;
+    margin-top: 10px;
+}
+
+footer{
+    display: table;
+    width: 100%;
+    background: rgb(40,133,202);
+    height: 49px;
+
+    left: 0;
+    bottom: 0;
+
+    position: fixed;
+}
+
+footer a{
+    /*display:table-cell成列标签*/
+    display: table-cell;
+    width: 10%;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+}
+
+footer a span{
+    display: block;
+    color: white;
+    font-size: 16px;
+}
+
+footer a img{
+    width: 19px;
+}

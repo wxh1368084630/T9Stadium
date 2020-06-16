@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>查询场馆</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <link rel="stylesheet" href="public/css/searchstadium.css">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--第一部分-->
+<div>
+    <%- include("commonhead.ejs")%>
+</div>
+
+<!--第二部分-->
+<div class="search">
+    <img  src="public/images/lable.jpg"/>
+    <div class="input-group">
+        <span class="input-group-addon">场馆</span>
+        <input class="form-control" type="text" name="stadium_name" id="stadiumName">
+    </div>
+    <div class="input_button">
+    <input type="button" class="btn btn-success" value="查询场馆"id="search" style="float: right"/>
+    </div>
+</div>
+
+<!--第三部分-->
+<section class="Lunbotu">
+    <div class="Lbt">
+    <img id="T9" src="public/images/T91.png" alt="哥，请您检查您的网络!">
+    </div>
+    <!--轮播图-->
+    <script>
+        var imgNumber=1;
+        var T9=document.getElementById("T9");
+        function changeImg() {
+            imgNumber++;
+            if (imgNumber>5){
+                imgNumber=1;
+            }
+            T9.src="public/images/T9"+imgNumber+".png";
+        }
+        setInterval(changeImg,3000);
+        // 定时器 3秒换一次
+    </script>
+</section>
+
+<!--第四部分-->
+<footer>
+    <a href="/getstadiumInfo">
+        <img src="public/images/stadium.png" alt="">
+        <span >场馆列表</span>
+    </a>
+    <a href="/searchstadium">
+        <img src="public/images/search_2.png" alt="">
+        <span>查询场馆</span>
+    </a>
+    <a href="/mystadium">
+        <img src="public/images/my.png" alt="">
+        <span >我的信息</span>
+    </a>
+</footer>
+
+<script type="text/javascript">
+    $('#search').click(function () {
+        var name = document.getElementById("stadiumName");
+        if (name.value==""){
+            alert("请输入场馆名");
+        }else{
+            $.ajax({
+                type:"post",
+                url:"/search",
+                async:true,
+                data:{name:name.value},
+                dataType:"json",
+                success:function (data) {
+                    if (data.code==400){
+                        alert(data.msg);
+                    }else{
+                        location.href="/playgrounds?name=" + name.value;
+                    }
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

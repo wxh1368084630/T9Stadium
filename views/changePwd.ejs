@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>注册</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.js"></script>
+    <style>
+        .regist_div_first{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .define_userId{
+            margin-left: 40px;
+            font-size: 20px;
+        }
+        .input-group{
+            width: 80%;
+            margin-top: 10px;
+            margin-left: 40px;
+        }
+        .input-group-addon{
+            font-size: 20px;
+            color:rgb(0, 101, 204);
+        }
+        .btn-success{
+            width: 80%;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <%- include("commonhead.ejs")%>
+</header>
+
+<div class="regist_div_first">
+    <img src="public/images/customer.png">
+</div>
+<div class="regist_div_second">
+    <div class="define_userId">
+        <span class="text-info" style="font-size: 20px">账号:</span>
+        <span id="userId"><%-name %></span>
+        <br>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">原密码</span>
+        <input class="form-control" type="text" name="account" id="O_Pwd"><br>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">新密码</span>
+        <input class="form-control" type="text" name="account" id="N_Pwd"><br>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">确认密码</span>
+        <input class="form-control" type="text" name="account" id="_Pwd"><br>
+    </div>
+    <input  style="font-size: 20px" class="btn btn-success" type="button" value="确认修改" id="C_Pwd">
+</div>
+<script type="text/javascript">
+    $('#C_Pwd').click(function () {
+        var userId ='<%-name %>';
+        let content1= md5($('#O_Pwd').val());
+        let content2 = md5($('#N_Pwd').val())
+        let token = localStorage.getItem('token');
+        $.ajax({
+            type:"post",
+            url:"/doChangePwd",
+            headers:{token:token},
+            data:{userId:userId,oldPwd:content1,newPwd:content2},
+            dataType:"json",
+            async:true,
+            success:function (data) {
+                if (data.code==200){
+                    alert(data.msg);
+                    location.href="/index";
+                }else{
+                    alert(data.msg);
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

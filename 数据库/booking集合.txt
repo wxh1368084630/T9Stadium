@@ -1,0 +1,91 @@
+{
+    "name" : "T9西田城店",
+    "monday" : "0",
+    "tuesday" : "1",
+    "wednesday" : "0",
+    "thursday" : "1",
+    "friday" : "1",
+    "saturday" : "0",
+    "sunday" : "0",
+}
+
+{
+    "name" : "T9下沙华媒店",
+    "monday" : "0",
+    "tuesday" : "1",
+    "wednesday" : "1",
+    "thursday" : "1",
+    "friday" : "0",
+    "saturday" : "1",
+    "sunday" : "0"
+}
+{
+    "name" : "T9阳光地带店",
+    "monday" : "1",
+    "tuesday" : "0",
+    "wednesday" : "1",
+    "thursday" : "0",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}
+{
+    "name" : "T9城建店",
+    "monday" : "1",
+    "tuesday" : "0",
+    "wednesday" : "1",
+    "thursday" : "1",
+    "friday" : "0",
+    "saturday" : "1",
+    "sunday" : "0"
+}
+{
+    "name" : "T9颐高城市店",
+    "monday" : "1",
+    "tuesday" : "0",
+    "wednesday" : "1",
+    "thursday" : "1",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}
+{
+    "name" : "T9西溪印象城店",
+    "monday" : "0",
+    "tuesday" : "0",
+    "wednesday" : "0",
+    "thursday" : "0",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}
+{
+    "name" : "T9德胜商职店",
+    "monday" : "0",
+    "tuesday" : "0",
+    "wednesday" : "0",
+    "thursday" : "0",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}
+{
+    "name" : "T9宝龙店",
+    "monday" : "0",
+    "tuesday" : "0",
+    "wednesday" : "0",
+    "thursday" : "0",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}
+{
+    "name" : "T9江南专修学院店",
+    "monday" : "0",
+    "tuesday" : "0",
+    "wednesday" : "0",
+    "thursday" : "0",
+    "friday" : "0",
+    "saturday" : "0",
+    "sunday" : "0"
+}

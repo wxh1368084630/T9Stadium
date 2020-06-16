@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>添加球场</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <script src="public/js/jquery-1.11.0.js" type="text/javascript" charset="UTF-8"></script>
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/stadium_manage_insert.css">
+    <script src="public/js/xheditor/xheditor-1.2.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/js/xheditor/xheditor_lang/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+<!--头部-->
+<header>
+    <%- include("commonhead.ejs")%>
+</header>
+<!--切换-->
+<section>
+    <div class="div_exchange">
+        <a href="/stadium_manage_insert"><span style="color: rgb(63,149,211)">添加球场</span></a>
+        <a href="/updataStadium" style="background: rgb(244,244,246)"><span style="color: black">修改球场</span></a>
+    </div>
+</section>
+<!--主体-->
+<section>
+    <div>
+        <div class="input-group">
+            <span class="input-group-addon">球场名字</span>
+            <input class="form-control" type="text" name="account" id="name"><br>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">球场地址</span>
+            <input class="form-control" type="text" name="password" id="address"><br>
+        </div>
+
+        <div class="div_checkbox">
+            <p><input type="checkbox"  value="soccer7" >七人制</p>
+            <p><input type="checkbox"  value="soccer5"  />五人制</p>
+            <p><input type="checkbox"  value="lighting" />灯光球场</p>
+            <p><input type="checkbox"  value="grass"  />天然草皮</p>
+            <p><input type="checkbox"  value="video" />录像功能</p>
+            <p><input type="checkbox"  value="restroom"  />更衣休息</p>
+            <p><input type="checkbox"  value="medical" />医疗条件</p>
+            <p><input type="checkbox"  value="part"  />停车场地</p>
+        </div>
+
+        <div class="">
+            <input class="btn btn-success" type="button" value="提交" id="submit">
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    $("#submit").click(function () {
+        var name = document.getElementById("name");
+        var address = document.getElementById("address");
+        if (name.value==""||address.value==""){
+            alert("球场名和地址不能为空");
+        }else {
+            //得到复选框数组
+            var checked = [];
+            $('input:checkbox:checked').each(function () {
+                checked.push($(this).val());
+            });
+            //数组完整化
+            var arr = [];
+            for (var n = 0; n < 8; n++) {
+                arr[n] = 0;
+            }
+            for (var n = 0; n < checked.length; n++) {
+                switch (checked[n]) {
+                    case "soccer7" :
+                        arr[0] = 1;
+                        break;
+                    case "soccer5" :
+                        arr[1] = 1;
+                        break;
+                    case "lighting" :
+                        arr[2] = 1;
+                        break;
+                    case "grass" :
+                        arr[3] = 1;
+                        break;
+                    case "video" :
+                        arr[4] = 1;
+                        break;
+                    case "restroom" :
+                        arr[5] = 1;
+                        break;
+                    case "medical" :
+                        arr[6] = 1;
+                        break;
+                    case "part" :
+                        arr[7] = 1;
+                        break;
+                }
+            }
+            $.ajax({
+                type: "post",
+                url: "/insertStadium",
+                dataType: "json",
+                data: {
+                    name: $("#name").val(),
+                    soccer7: arr[0],
+                    soccer5: arr[1],
+                    lighting: arr[2],
+                    grass: arr[3],
+                    video: arr[4],
+                    restroom: arr[5],
+                    medical: arr[6],
+                    park: arr[7],
+                    address: $("#address").val()
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert(data.msg);
+                        location.href = "/mystadium";
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>

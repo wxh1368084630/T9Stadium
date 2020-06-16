@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>T9stadium</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <script type="text/javascript" src="public/js/jquery-1.11.0.js"></script>
+    <link rel="stylesheet" href="public/css/aboutus.css">
+</head>
+
+<script type="text/javascript">
+    $.ajax({
+        type:"get",
+        url:"/aboutus",
+        dataType:"json",
+        success:function (data) {
+            if (data.code==200){
+               var tittle = document.getElementById("tittle");
+               var msg = document.getElementById("msg");
+               tittle.innerText = data.tittle;
+               msg.innerHTML = data.msg;
+            }else{
+                var msg = document.getElementById("msg");
+                msg.innerText = "请检查你的网络连接";
+            }
+        }
+    })
+</script>
+<body>
+<!--第一部分-->
+<%- include("commonhead.ejs")%>
+
+<!--第二部分-->
+<div class="polaroid">
+    <img src="/public/images/index.jpg" alt="Norway" style="width:100%">
+    <div class="container">
+        <h3>公司简介</h3>
+        <h4 id="tittle"></h4>
+        <p class="main" id="msg"></p>
+    </div>
+</div>
+
+</body>
+</html>

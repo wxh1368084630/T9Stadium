@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,intial-scale=1,user-scalable=no">
+    <title>修改球场</title>
+    <link rel="short icon" href="public/images/lable.jpg">
+    <script src="public/js/jquery-1.11.0.js" type="text/javascript" charset="UTF-8"></script>
+    <!--引入使用外部bootstrap-->
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="public/css/stadium_manage_insert.css">
+</head>
+
+<body>
+<!--头部-->
+<header>
+    <%- include("commonhead.ejs")%>
+</header>
+
+<!--切换-->
+<section>
+    <div class="div_exchange">
+        <a href="/stadium_manage_insert" style="background: rgb(244,244,246)"><span style="color: black">添加球场</span></a>
+        <a href="/stadium_manage_delete" style="background: white"><span style="color: rgb(63,149,211)">修改球场</span></a>
+    </div>
+</section>
+<!--主体-->
+<section>
+
+    <div class="btn-group">
+        <button  type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="btn_list" style="font-size: 20px">球场列表</span>
+        </button>
+        <div class="dropdown-menu">
+            <% for (var i=0;i<arr.length;i++){ %>
+            <a style="font-size: 18px" class="dropdown-item" href="#" onclick="getInfo('<%= arr[i].name%>')"><%= arr[i].name%></a>
+            <br>
+            <% }%>
+        </div>
+    </div>
+
+    <div>
+        <div class="input-group">
+            <span class="input-group-addon">球场名字</span>
+            <input class="form-control" type="text" name="account" id="name"><br>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">球场地址</span>
+            <input class="form-control" type="text" name="password" id="address"><br>
+        </div>
+
+        <div class="div_checkbox">
+            <input type="checkbox"  value="soccer7" id="soccer7">七人制</input><br>
+            <input type="checkbox"  value="soccer5" id="soccer5" >五人制</input><br>
+            <input type="checkbox"  value="lighting" id="lighting">灯光球场</input><br>
+            <input type="checkbox"  value="grass" id="grass" >天然草皮</input><br>
+            <input type="checkbox"  value="video" id="video" >录像功能</input><br>
+            <input type="checkbox"  value="restroom" id="restroom" >更衣休息</input><br>
+            <input type="checkbox"  value="medical" id="medical">医疗条件</input><br>
+            <input type="checkbox"  value="part" id="park" >停车场地</input><br>
+        </div>
+
+        <div class="">
+            <input class="btn btn-success" type="button" value="提交" id="submit">
+        </div>
+        <div class="">
+            <input class="btn btn-success" type="button" value="删除" id="delete">
+        </div>
+    </div>
+</section>
+<!--底部-->
+
+<script type="text/javascript">
+    //点击球场列表，显示球场详细信息方便进行修改
+    function getInfo(arr){
+        var btn = document.getElementById("btn_list");
+        var name = document.getElementById("name");
+        var address = document.getElementById("address");
+        var soccer7 = document.getElementById("soccer7");
+        var soccer5 = document.getElementById("soccer5");
+        var lighting = document.getElementById("lighting");
+        var grass = document.getElementById("grass");
+        var video = document.getElementById("video");
+        var restroom = document.getElementById("restroom");
+        var medical = document.getElementById("medical");
+        var park = document.getElementById("park");
+        btn.innerText = arr;
+        $.ajax({
+            type:"get",
+            url:"/getone",
+            dataType:"json",
+            data:{
+                name:arr
+            },
+            success:function (data) {
+                name.value = data.name;
+                address.value = data.address;
+                if( data.soccer7 == 1){
+                    soccer7.setAttribute("checked","checked");
+                }else{
+                    soccer7.removeAttribute("checked");
+                }
+                if( data.soccer5 == 1){
+                    soccer5.setAttribute("checked","checked");
+                }else{
+                    soccer5.removeAttribute("checked");
+                }
+                if( data.lighting  == 1){
+                    lighting.setAttribute("checked","checked");
+                }else{
+                    lighting.removeAttribute("checked");
+                }
+                if( data.grass == 1){
+                    grass.setAttribute("checked","checked");
+                }else{
+                    grass.removeAttribute("checked");
+                }
+                if( data.video == 1){
+                    video.setAttribute("checked","checked");
+                }else{
+                    video.removeAttribute("checked");
+                }
+                if( data.restroom == 1) {
+                    restroom.setAttribute("checked", "checked");
+                }else{
+                    restroom.removeAttribute("checked");
+                }
+                if( data.medical == 1){
+                    medical.setAttribute("checked","checked");
+                }else{
+                    medical.removeAttribute("checked");
+                }
+                if( data.park == 1){
+                    park.setAttribute("checked","checked");
+                }else{
+                    park.removeAttribute("checked");
+                }
+            }
+        });
+    }
+
+     $("#submit").click(function () {
+        //得到复选框数组
+        var checked = [];
+        var btn = document.getElementById("btn_list");
+        $('input:checkbox:checked').each(function () {
+            checked.push($(this).val());
+        });
+        //数组完整化
+        var arr = [];
+        for(var n=0; n<8; n++){
+            arr[n] = 0;
+        }
+        for(var n=0;n<checked.length;n++){
+            switch (checked[n]){
+                case "soccer7" :arr[0]=1;break;
+                case "soccer5" :arr[1]=1;break;
+                case "lighting" :arr[2]=1;break;
+                case "grass" :arr[3]=1;break;
+                case "video" :arr[4]=1;break;
+                case "restroom" :arr[5]=1;break;
+                case "medical" :arr[6]=1;break;
+                case "part" :arr[7]=1;break;
+            }
+        }
+        $.ajax({
+            type:"post",
+            url:"/updata",
+            dataType:"json",
+            data:{
+                oldname:btn.innerText,
+                newname:$("#name").val(),
+                soccer7:arr[0],
+                soccer5:arr[1],
+                lighting:arr[2],
+                grass:arr[3],
+                video:arr[4],
+                restroom:arr[5],
+                medical:arr[6],
+                park:arr[7],
+                address:$("#address").val()
+            },
+            success:function (data) {
+                if (data.code==200){
+                    alert(data.msg);
+                    location.href="/updataStadium";
+                }
+            }
+        })
+    });
+
+
+    $("#delete").click(function(){
+        var btn = document.getElementById("btn_list");
+        $.ajax({
+            type:"get",
+            url:"/deleteone",
+            dataType:"json",
+            async:true,
+            data:{
+                name:btn.innerText
+            },
+            success:function (data) {
+                if (data.code==200){
+                    alert(data.msg);
+                    location.href="/updataStadium";
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>
